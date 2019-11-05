@@ -30,3 +30,18 @@ var req = new XMLHttpRequest();
         } 
     }
 req.send();
+
+function selectAll(btn) {
+    var images = document.getElementsByClassName("image");
+    for (var i=0; i<images.length; i++) {
+        if (btn.value = "Unselect All") {
+            btn.value = "Select All";
+            images[i].classList.remove("image-selected");
+        }
+        else {
+            btn.value = "Unselect All";
+            images[i].classList.add("image-selected");
+        }
+    }
+    btn.value = "Unselect All";
+}
