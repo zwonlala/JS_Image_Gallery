@@ -20,8 +20,20 @@ var req = new XMLHttpRequest();
 
                     //classList와 toggle을 사용하면 다음과 같이 한줄로 사용 가능
                     this.classList.toggle("image-selected");
-
                 };
+
+                div.onmouseover = function() {
+                    var element = this;
+                    this.timerId = setTimeout(function() {
+                        element.classList.add("image-magnified");
+                    }, 1000);
+                }
+
+                div.onmouseout = function() {
+                    clearTimeout(this.timerId);
+                    this.classList.remove("image-magnified");
+                }
+
                 var img = document.createElement("img");
                 img.src = data[i];
                 div.appendChild(img);
@@ -43,5 +55,4 @@ function selectAll(btn) {
             images[i].classList.add("image-selected");
         }
     }
-    btn.value = "Unselect All";
 }
